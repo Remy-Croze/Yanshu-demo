@@ -13,7 +13,7 @@ export const diagnosisScenarios = {
   },
   irritation: {
     diagnosis: "Dermatite de contact possible",
-    confidence: 84, // L'IA donne une probabilité, pas une certitude absolue [cite: 99]
+    confidence: 84, // L'IA donne une probabilité, pas une certitude absolue
     details: "Rougeurs localisées détectées sur la zone photographiée.",
     recommendations: ["Cessez l'utilisation de nouveaux produits", "Consultez un spécialiste si persistance"]
   }

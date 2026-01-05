@@ -1,0 +1,154 @@
+ARBORESCENCE DU DOSSIER : C:\Users\Rémy\Downloads\RenduFinale\RenduFinale
+Dossiers ignorés : .git, __pycache__, Lib
+==================================================
+
+[RenduFinale/]
+    [skin_model/]
+        .gitattributes
+        .gitignore
+        all_results.json
+        config.json
+        eval_results.json
+        model.safetensors
+        --- DÉBUT FICHIER PYTHON ---
+        "skin_model\predict.py" :
+        | import torch
+        | from PIL import Image
+        | from transformers import AutoImageProcessor, AutoModelForImageClassification
+        | #rimmoumni: test la prédiction sur un image au nom de test.jfif
+        | # Dossier du modèle (ici : le dossier courant = skin_model)
+        | MODEL_DIR = "."
+        | 
+        | # Charger le processor et le modèle
+        | processor = AutoImageProcessor.from_pretrained(MODEL_DIR, use_fast=True)
+        | model = AutoModelForImageClassification.from_pretrained(MODEL_DIR)
+        | model.eval()
+        | 
+        | 
+        | def predict(image_path: str, top_k: int = 3):
+        |     """
+        |     Perform image classification and return top-k predictions.
+        |     """
+        |     # Ouvrir l'image
+        |     image = Image.open(image_path).convert("RGB")
+        | 
+        |     # Prétraitement
+        |     inputs = processor(images=image, return_tensors="pt")
+        | 
+        |     # Inference
+        |     with torch.no_grad():
+        |         logits = model(**inputs).logits[0]
+        | 
+        |     # Probabilités
+        |     probs = torch.softmax(logits, dim=0)
+        |     values, indices = torch.topk(probs, top_k)
+        | 
+        |     # Mapping id -> label (robuste)
+        |     id2label = model.config.id2label
+        | 
+        |     def get_label(i: int) -> str:
+        |         if isinstance(id2label, dict):
+        |             return id2label.get(i) or id2label.get(str(i)) or f"class_{i}"
+        |         return id2label[i]
+        | 
+        |     # Résultats
+        |     results = []
+        |     for score, idx in zip(values, indices):
+        |         i = int(idx.item())
+        |         results.append({
+        |             "label": get_label(i),
+        |             "confidence": float(score.item())
+        |         })
+        | 
+        |     return results
+        | 
+        | 
+        | if __name__ == "__main__":
+        |     image_file = "test.jfif"  #fichier de test
+        | 
+        |     predictions = predict(image_file, top_k=3)
+        | 
+        |     print("Résultats de prédiction :")
+        |     for p in predictions:
+        |         print(f"- {p['label']} : {p['confidence']:.4f}")
+        --- FIN FICHIER PYTHON ---
+        preprocessor_config.json
+        README.md
+        test.jfif
+        --- DÉBUT FICHIER PYTHON ---
+        "skin_model\test_load.py" :
+        | #rimmoumni: Teste le fonctionnement du modèle
+        | from transformers import AutoImageProcessor, AutoModelForImageClassification
+        | 
+        | MODEL_DIR = "."
+        | 
+        | processor = AutoImageProcessor.from_pretrained(MODEL_DIR)
+        | model = AutoModelForImageClassification.from_pretrained(MODEL_DIR)
+        | 
+        | print("Modèle chargé correctement")
+        | print("Type du modèle :", model.__class__.__name__)
+        | print("Nombre de classes :", model.config.num_labels)
+        --- FIN FICHIER PYTHON ---
+        trainer_state.json
+        training_args.bin
+        train_results.json
+        [.cache/]
+            [huggingface/]
+                .gitignore
+                [download/]
+                    .gitattributes.metadata
+                    all_results.json.metadata
+                    config.json.metadata
+                    eval_results.json.metadata
+                    model.safetensors.metadata
+                    preprocessor_config.json.metadata
+                    README.md.metadata
+                    trainer_state.json.metadata
+                    training_args.bin.metadata
+                    train_results.json.metadata
+                    [runs/]
+                        [Mar16_15-28-14_22a85a046d8a/]
+                            events.out.tfevents.1710603046.22a85a046d8a.34.0.metadata
+                            events.out.tfevents.1710612609.22a85a046d8a.34.1.metadata
+                        [May09_07-08-30_247161d0c75e/]
+                            events.out.tfevents.1746774527.247161d0c75e.268.0.metadata
+                            events.out.tfevents.1746786446.247161d0c75e.268.1.metadata
+        [mydata/]
+        [runs/]
+            [Mar16_15-28-14_22a85a046d8a/]
+                events.out.tfevents.1710603046.22a85a046d8a.34.0
+                events.out.tfevents.1710612609.22a85a046d8a.34.1
+            [May09_07-08-30_247161d0c75e/]
+                events.out.tfevents.1746774527.247161d0c75e.268.0
+                events.out.tfevents.1746786446.247161d0c75e.268.1
+        [venv/]
+            .gitignore
+            pyvenv.cfg
+            [Include/]
+            [Scripts/]
+                activate
+                activate.bat
+                activate.fish
+                Activate.ps1
+                deactivate.bat
+                f2py.exe
+                hf.exe
+                huggingface-cli.exe
+                isympy.exe
+                normalizer.exe
+                numpy-config.exe
+                pip.exe
+                pip3.13.exe
+                pip3.exe
+                python.exe
+                pythonw.exe
+                tiny-agents.exe
+                torchfrtrace.exe
+                torchrun.exe
+                tqdm.exe
+                transformers-cli.exe
+                transformers.exe
+            [share/]
+                [man/]
+                    [man1/]
+                        isympy.1

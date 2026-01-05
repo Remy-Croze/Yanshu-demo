@@ -1,10 +1,25 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { Camera, Upload } from 'lucide-react';
 
-const PhotoUploader = ({ onSimulateUpload, isAnalyzing }) => {
+const PhotoUploader = ({ onFileSelect, isAnalyzing }) => {
+  // Crée une référence invisible vers l'input de fichier
+  const fileInputRef = useRef(null);
+
+  const handleClick = () => {
+    // Quand on clique sur la boîte, on simule un clic sur l'input caché
+    fileInputRef.current.click();
+  };
+
+  const handleFileChange = (event) => {
+    const file = event.target.files[0];
+    if (file && onFileSelect) {
+      onFileSelect(file); // On renvoie le vrai fichier au parent
+    }
+  };
+
   return (
     <div 
-      onClick={!isAnalyzing ? onSimulateUpload : undefined}
+      onClick={!isAnalyzing ? handleClick : undefined}
       style={{
         border: '2px dashed #E0E0E0',
         borderRadius: '20px',
@@ -17,8 +32,17 @@ const PhotoUploader = ({ onSimulateUpload, isAnalyzing }) => {
         backgroundColor: '#FAFAFA',
         transition: 'all 0.3s ease'
       }}
-      className="uploader-hover" // Classe utilitaire à ajouter dans CSS si besoin
+      className="uploader-hover"
     >
+      {/* L'input caché qui fait le vrai travail */}
+      <input 
+        type="file" 
+        ref={fileInputRef} 
+        onChange={handleFileChange} 
+        style={{ display: 'none' }} 
+        accept="image/*" // Accepte uniquement les images
+      />
+
       <div style={{ 
         backgroundColor: 'var(--color-primary-light)', 
         padding: '20px', 

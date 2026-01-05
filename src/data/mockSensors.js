@@ -1,5 +1,5 @@
 export const currentSensors = {
-  // Le cœur du monitoring cutané continu [cite: 26]
+  // Le cœur du monitoring cutané continu
   hydration: {
     id: "hydratation",
     label: "Hydratation Cutanée",
@@ -39,7 +39,7 @@ export const currentSensors = {
   battery: {
     id: "battery",
     label: "Batterie Bracelet",
-    value: 82, // Long-lasting battery [cite: 35]
+    value: 82, // Long-lasting battery
     unit: "%",
     status: "good",
     icon: "Battery"
