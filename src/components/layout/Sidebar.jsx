@@ -16,7 +16,7 @@ const Sidebar = () => {
           className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}
         >
           <LayoutDashboard size={24} />
-          <span>Suivi</span>
+          <span>Dashboard</span>
         </NavLink>
 
         <NavLink 
@@ -24,7 +24,7 @@ const Sidebar = () => {
           className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}
         >
           <ScanLine size={24} />
-          <span>Scan IA</span>
+          <span>AI Scan</span>
         </NavLink>
 
         <NavLink 
@@ -32,13 +32,13 @@ const Sidebar = () => {
           className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}
         >
           <Settings size={24} />
-          <span>Réglages</span>
+          <span>Settings</span>
         </NavLink>
       </nav>
       
       <div className="sidebar-footer">
-        <strong>Mode Éco activé</strong>
-        <br/>Capteurs basse consommation
+        <strong>Eco Mode Active</strong>
+        <br/>Low power sensors
       </div>
     </aside>
   );

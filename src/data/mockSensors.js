@@ -1,44 +1,44 @@
 export const currentSensors = {
-  // Le cœur du monitoring cutané continu
+  // Continuous skin monitoring core
   hydration: {
-    id: "hydratation",
-    label: "Hydratation Cutanée",
+    id: "hydration",
+    label: "Skin Hydration",
     value: 34,
     unit: "%",
     status: "warning", // low, good, warning
-    message: "Niveau bas détecté. Pensez à boire de l'eau.",
+    message: "Low level detected. Remember to drink water.",
     icon: "Droplets"
   },
   uvIndex: {
     id: "uv",
-    label: "Exposition UV",
+    label: "UV Exposure",
     value: 6,
     unit: "UV",
     status: "danger",
-    message: "Indice élevé. Crème solaire recommandée.",
+    message: "High index. Sunscreen recommended.",
     icon: "Sun"
   },
   temperature: {
     id: "temp",
-    label: "Température Peau",
+    label: "Skin Temperature",
     value: 32.5,
     unit: "°C",
     status: "good",
-    message: "Température normale.",
+    message: "Normal temperature.",
     icon: "Thermometer"
   },
   sebum: {
     id: "sebum",
-    label: "Niveau de Sébum",
-    value: "Modéré",
+    label: "Sebum Level",
+    value: "Moderate",
     unit: "",
     status: "good",
-    message: "Équilibre lipidique stable.",
+    message: "Stable lipid balance.",
     icon: "Activity"
   },
   battery: {
     id: "battery",
-    label: "Batterie Bracelet",
+    label: "Wristband Battery",
     value: 82, // Long-lasting battery
     unit: "%",
     status: "good",

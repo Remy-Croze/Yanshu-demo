@@ -1,20 +1,20 @@
 export const diagnosisScenarios = {
   normal: {
-    diagnosis: "Peau Saine",
+    diagnosis: "Healthy Skin",
     confidence: 98,
-    details: "Aucune anomalie détectée. Continuez votre routine actuelle.",
-    recommendations: ["Maintenez l'hydratation", "Nettoyage doux le soir"]
+    details: "No anomalies detected. Continue your current routine.",
+    recommendations: ["Maintain hydration", "Gentle cleansing in the evening"]
   },
   dry: {
-    diagnosis: "Xérose (Sécheresse)",
+    diagnosis: "Xerosis (Dryness)",
     confidence: 89,
-    details: "Des signes de desquamation légère sont visibles.",
-    recommendations: ["Appliquez une crème riche en céramides", "Évitez l'eau trop chaude"]
+    details: "Signs of slight flaking are visible.",
+    recommendations: ["Apply a ceramide-rich cream", "Avoid hot water"]
   },
   irritation: {
-    diagnosis: "Dermatite de contact possible",
-    confidence: 84, // L'IA donne une probabilité, pas une certitude absolue
-    details: "Rougeurs localisées détectées sur la zone photographiée.",
-    recommendations: ["Cessez l'utilisation de nouveaux produits", "Consultez un spécialiste si persistance"]
+    diagnosis: "Possible Contact Dermatitis",
+    confidence: 84, // AI gives a probability, not absolute certainty
+    details: "Localized redness detected on the photographed area.",
+    recommendations: ["Stop using new products", "Consult a specialist if it persists"]
   }
 };

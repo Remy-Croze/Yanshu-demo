@@ -1,7 +1,7 @@
 import React from 'react';
 import { Shield, Leaf, Database, Smartphone } from 'lucide-react';
 
-// --- CORRECTION : Les composants "helpers" sont définis EN DEHORS du composant principal ---
+// --- HELPERS ---
 
 const Section = ({ icon: Icon, title, children }) => (
   <div className="card" style={{ marginBottom: '20px' }}>
@@ -32,49 +32,49 @@ const ToggleRow = ({ label, description, defaultChecked = false }) => (
   </div>
 );
 
-// --- FIN DES HELPERS ---
+// --- END HELPERS ---
 
 const SettingsPage = () => {
   return (
     <div style={{ maxWidth: '700px', margin: '0 auto', animation: 'fadeIn 0.5s ease' }}>
-      <h1 style={{ marginBottom: '30px' }}>Paramètres & Confidentialité</h1>
+      <h1 style={{ marginBottom: '30px' }}>Settings & Privacy</h1>
 
-      {/* Section Gouvernance / Données */}
-      <Section icon={Shield} title="Confidentialité des Données (Gouvernance)">
+      {/* Governance / Data Section */}
+      <Section icon={Shield} title="Data Privacy (Governance)">
         <ToggleRow 
-          label="Partage Anonymisé (R&D)" 
-          description="Aider la recherche scientifique dermatologique sans révéler mon identité."
+          label="Anonymized Sharing (R&D)" 
+          description="Help scientific dermatological research without revealing my identity."
           defaultChecked={true}
         />
         <ToggleRow 
-          label="Stockage Local Uniquement" 
-          description="Garder mes photos biométriques sur mon téléphone, pas dans le cloud."
+          label="Local Storage Only" 
+          description="Keep my biometric photos on my phone, not in the cloud."
           defaultChecked={false}
         />
         <button style={{ marginTop: '10px', color: 'var(--color-danger)', background: 'none', border: '1px solid var(--color-danger)', padding: '8px 16px', borderRadius: '8px', cursor: 'pointer' }}>
-          Télécharger toutes mes données (GDPR)
+          Download all my data (GDPR)
         </button>
       </Section>
 
-      {/* Section Environnement */}
-      <Section icon={Leaf} title="Mode Éco & Matériel (Environnement)">
+      {/* Environment Section */}
+      <Section icon={Leaf} title="Eco Mode & Hardware (Environment)">
         <ToggleRow 
-          label="Mode Économie d'Énergie" 
-          description="Réduit la fréquence de mesure des capteurs pour prolonger la batterie."
+          label="Energy Saving Mode" 
+          description="Reduces sensor measurement frequency to extend battery life."
           defaultChecked={true}
         />
         <div style={{ display: 'flex', gap: '10px', alignItems: 'center', marginTop: '10px', fontSize: '0.9rem', color: 'var(--color-text-muted)' }}>
           <Smartphone size={16} />
-          <span>Bracelet connecté : YánShù Model 1 (Matériaux 80% recyclés)</span>
+          <span>Connected Bracelet: YánShù Model 1 (80% recycled materials)</span>
         </div>
       </Section>
 
-      <Section icon={Database} title="Gestion du Compte">
+      <Section icon={Database} title="Account Management">
         <p style={{ fontSize: '0.9rem', color: 'var(--color-text-muted)', marginBottom: '15px' }}>
-          Version de l'application : 0.1.0 (Demo Build)
+          App Version: 0.1.0 (Demo Build)
         </p>
         <button className="btn-primary" style={{ backgroundColor: 'var(--color-text-main)' }}>
-          Déconnexion
+          Log Out
         </button>
       </Section>
     </div>

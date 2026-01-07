@@ -41,12 +41,12 @@ const Header = () => {
 
   return (
     <header style={styles.header}>
-      <h2 style={styles.title}>Mon Espace Santé</h2>
+      <h2 style={styles.title}>My Health Space</h2>
       
       <div style={styles.actions}>
         <div style={{ position: 'relative', cursor: 'pointer' }}>
           <Bell size={20} color="var(--color-text-muted)" />
-          {/* Point de notification */}
+          {/* Notification dot */}
           <span style={{ 
             position: 'absolute', top: -2, right: -2, 
             width: '8px', height: '8px', 
@@ -57,7 +57,7 @@ const Header = () => {
         <div style={styles.profile}>
           <div style={{ textAlign: 'right' }}>
             <div style={{ fontSize: '0.9rem', fontWeight: 600 }}>Remy</div>
-            <div style={{ fontSize: '0.75rem', color: 'var(--color-text-muted)' }}>Utilisateur Premium</div>
+            <div style={{ fontSize: '0.75rem', color: 'var(--color-text-muted)' }}>Premium User</div>
           </div>
           <div style={styles.avatar}>
             <User size={20} />

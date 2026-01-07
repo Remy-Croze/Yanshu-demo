@@ -9,58 +9,58 @@ const DashboardPage = () => {
   return (
     <div style={{ paddingBottom: '40px', animation: 'fadeIn 0.5s ease' }}>
       
-      {/* En-tête de la page */}
+      {/* Page Header */}
       <div style={{ marginBottom: '30px' }}>
-        <h1 style={{ fontSize: '1.8rem', marginBottom: '8px' }}>Bonjour, Remy 👋</h1>
+        <h1 style={{ fontSize: '1.8rem', marginBottom: '8px' }}>Hello, Remy 👋</h1>
         <p style={{ color: 'var(--color-text-muted)' }}>
-          Voici l'état de votre peau aujourd'hui. L'hydratation est un peu basse ce matin.
+          Here is your skin status today. Hydration is a bit low this morning.
         </p>
       </div>
 
-      {/* Grille des Capteurs (Hydratation, UV, Temp, Sébum) */}
+      {/* Sensor Grid (Hydration, UV, Temp, Sebum) */}
       <div style={{ 
         display: 'grid', 
         gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', 
         gap: '20px', 
         marginBottom: '30px' 
       }}>
-        {/* On transforme l'objet sensors en tableau pour l'afficher */}
         {Object.values(currentSensors).map((sensor) => (
           <SensorCard key={sensor.id} data={sensor} />
         ))}
       </div>
 
-      {/* Section Graphiques & Conseils */}
+      {/* Charts & Advice Section */}
       <div style={{ 
         display: 'grid', 
         gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))', 
         gap: '20px' 
       }}>
-        {/* Graphique d'évolution */}
+        
+        {/* Trend Chart */}
         <TrendChart 
-          title="Évolution de l'Hydratation (7 jours)" 
+          title="Hydration Trend (7 days)" 
           data={weeklyHistory} 
           dataKey="hydration" 
-          color="var(--color-secondary)" // Vert YánShù
+          color="var(--color-secondary)" // YánShù Green
         />
 
-        {/* Colonne de conseils dynamiques */}
+        {/* Dynamic Advice Column */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-          <h3 style={{ fontSize: '1.1rem' }}>Actions Recommandées</h3>
+          <h3 style={{ fontSize: '1.1rem' }}>Recommended Actions</h3>
           
           <RecommendationCard 
-            title="Hydratation Prioritaire" 
-            text="Votre niveau est à 34% et décroit depuis 7 jours ou plus. Appliquez votre sérum hydratant habituel et buvez 500ml d'eau dans l'heure. Voir les produits recommandés ->" 
+            title="Priority Hydration" 
+            text="Your level is at 34% and has been decreasing for 7 days. Apply your usual moisturizing serum and drink 500ml of water within the hour." 
           />
           
           <RecommendationCard 
-            title="Protection UV Requise" 
-            text="L'indice UV extérieur monte à 6. Une protection SPF 30+ est nécessaire si vous sortez déjeuner." 
+            title="UV Protection Required" 
+            text="Outdoor UV index is rising to 6. SPF 30+ protection is necessary if you go out for lunch." 
           />
 
           <div className="card" style={{ marginTop: 'auto', background: 'linear-gradient(135deg, #FF8A80 0%, #FFEBEE 100%)', color: 'white' }}>
-            <h4 style={{ color: '#C62828', marginBottom: '5px' }}>Rappel Rendez-vous</h4>
-            <p style={{ color: '#D32F2F', fontSize: '0.9rem' }}>Dermatologue (Dr. Peaulisse)<br/>Demain à 14h30</p>
+            <h4 style={{ color: '#C62828', marginBottom: '5px' }}>Appointment Reminder</h4>
+            <p style={{ color: '#D32F2F', fontSize: '0.9rem' }}>Dermatologist (Dr. Peaulisse)<br/>Tomorrow at 2:30 PM</p>
           </div>
         </div>
       </div>

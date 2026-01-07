@@ -2,18 +2,16 @@ import React, { useRef } from 'react';
 import { Camera, Upload } from 'lucide-react';
 
 const PhotoUploader = ({ onFileSelect, isAnalyzing }) => {
-  // Crée une référence invisible vers l'input de fichier
   const fileInputRef = useRef(null);
 
   const handleClick = () => {
-    // Quand on clique sur la boîte, on simule un clic sur l'input caché
     fileInputRef.current.click();
   };
 
   const handleFileChange = (event) => {
     const file = event.target.files[0];
     if (file && onFileSelect) {
-      onFileSelect(file); // On renvoie le vrai fichier au parent
+      onFileSelect(file);
     }
   };
 
@@ -34,13 +32,12 @@ const PhotoUploader = ({ onFileSelect, isAnalyzing }) => {
       }}
       className="uploader-hover"
     >
-      {/* L'input caché qui fait le vrai travail */}
       <input 
         type="file" 
         ref={fileInputRef} 
         onChange={handleFileChange} 
         style={{ display: 'none' }} 
-        accept="image/*" // Accepte uniquement les images
+        accept="image/*" 
       />
 
       <div style={{ 
@@ -54,12 +51,12 @@ const PhotoUploader = ({ onFileSelect, isAnalyzing }) => {
       </div>
       
       <h3 style={{ color: 'var(--color-text-main)', marginBottom: '10px' }}>
-        {isAnalyzing ? "Analyse IA en cours..." : "Prendre ou importer une photo"}
+        {isAnalyzing ? "AI Analysis in progress..." : "Take or upload a photo"}
       </h3>
       
       {!isAnalyzing && (
         <p style={{ color: 'var(--color-text-muted)', fontSize: '0.9rem', maxWidth: '300px', textAlign: 'center' }}>
-          L'IA YánShù analysera la texture, les rougeurs et l'hydratation de votre peau.
+          YánShù AI will analyze your skin texture, redness, and hydration.
         </p>
       )}
     </div>
